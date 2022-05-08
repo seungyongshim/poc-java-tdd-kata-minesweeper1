@@ -11,6 +11,7 @@ class MineItemTest {
 
         // act
         sut.setNumber(1);
+        sut.click();
         var ret = sut.toString();
 
         // assert
@@ -25,6 +26,7 @@ class MineItemTest {
 
         // act
         sut.setBomb();
+        sut.click();
         var ret = sut.toString();
 
         // assert
