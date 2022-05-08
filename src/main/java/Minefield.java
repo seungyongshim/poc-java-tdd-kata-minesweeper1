@@ -4,11 +4,18 @@ import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 public class Minefield {
-    public Minefield(int i, int j) {
+    public Minefield(int width, int height, int bombsCount) {
         mineItems = Stream.iterate(0, n -> n + 1)
-                          .limit(i * j)
+                          .limit(width * height)
                           .map(x -> new MineItem())
                           .toList();
+
+        
+
+    }
+    public Minefield(int width, int height) {
+        this(width, height, 0);
+        
     }
 
     List<MineItem> mineItems;

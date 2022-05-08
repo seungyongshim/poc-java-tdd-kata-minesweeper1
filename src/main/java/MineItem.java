@@ -25,4 +25,8 @@ public class MineItem {
 	public void click() {
         isCover = false;
 	}
+
+    public boolean isBomb() {
+        return isBomb;
+    }
 }

@@ -14,9 +14,18 @@ public class MinefieldTest {
         // act
 
         // assert
-
         assertEquals(9, sut.getMineItems().size());
+    }
 
+    @Test
+    void should_set_bombs()
+    {
+        var sut = new Minefield(3, 3, 3);
+
+        assertEquals(sut.getMineItems()
+                        .stream()
+                        .filter(x -> x.isBomb())
+                        .count(), 3);
     }
 
 }
