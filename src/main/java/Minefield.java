@@ -5,8 +5,13 @@ import java.util.stream.Stream;
 
 public class Minefield {
     List<MineItem> mineItems;
+    int width;
+    int height;
 
     public Minefield(int width, int height, int bombs) {
+        this.width = width;
+        this.height = height;
+
         mineItems = Stream.iterate(0, n -> n + 1)
                           .limit(width * height)
                           .map(x -> new MineItem())
@@ -27,6 +32,18 @@ public class Minefield {
     }
 
 	public void calcNearBombs() {
-        
+        mineItems.stream()
+                 .filter(x -> x.isBomb());
 	}
+
+    public Stream<MineItem> nearItems(MineItem item)
+    {
+        var builder = Stream.<MineItem>builder();
+
+        // 튜플이 없어!!!!
+
+        builder.add(item);
+
+        return builder.build();
+    }
 }
