@@ -10,10 +10,24 @@ class MineItemTest {
         var sut = new MineItem();
 
         // act
-        var ret = sut.getNumber();
+        sut.setNumber(1);
+        var ret = sut.toString();
 
         // assert
-        assertEquals(1, ret);
-        //
+        assertEquals("1", ret);
+    }
+
+    @Test
+    void should_bomb()
+    {
+        // arrange
+        var sut = new MineItem();
+
+        // act
+        sut.setBomb();
+        var ret = sut.toString();
+
+        // assert
+        assertEquals("*", ret);
     }
 }
