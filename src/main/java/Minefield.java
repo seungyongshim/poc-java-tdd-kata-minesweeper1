@@ -33,8 +33,9 @@ public class Minefield {
 
 	public void calcNearBombs() {
         mineItems.stream()
+                 .parallel()
                  .filter(x -> x.isBomb())
-                 .forEach(x -> nearItems(x).forEach(MineItem::addNumber));
+                 .forEach(x -> nearItems(x).parallel().forEach(MineItem::addNumber));
 	}
 
     public Stream<MineItem> nearItems(MineItem item)
