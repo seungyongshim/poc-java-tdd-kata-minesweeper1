@@ -33,17 +33,33 @@ public class Minefield {
 
 	public void calcNearBombs() {
         mineItems.stream()
-                 .filter(x -> x.isBomb());
+                 .filter(x -> x.isBomb())
+                 .forEach(x -> nearItems(x).forEach(MineItem::addNumber));
 	}
 
     public Stream<MineItem> nearItems(MineItem item)
     {
-        var builder = Stream.<MineItem>builder();
-
         // 튜플이 없어!!!!
-
-        builder.add(item);
-
-        return builder.build();
+        var builderPosNear = Stream.<Tuple>builder();
+        builderPosNear.add(new Tuple(item.getX() - 1, item.getY() - 1));
+        builderPosNear.add(new Tuple(item.getX() , item.getY() - 1));
+        builderPosNear.add(new Tuple(item.getX() + 1, item.getY() - 1));
+        builderPosNear.add(new Tuple(item.getX() - 1, item.getY() ));
+        builderPosNear.add(new Tuple(item.getX() + 1, item.getY() ));
+        builderPosNear.add(new Tuple(item.getX() - 1, item.getY() + 1));
+        builderPosNear.add(new Tuple(item.getX() , item.getY() + 1));
+        builderPosNear.add(new Tuple(item.getX() + 1, item.getY() + 1));
+        
+        return builderPosNear.build()
+                             .map(x -> 
+                             {
+                                 if(x.x() < 0) return null;
+                                 if(x.x() >= this.width) return null;
+                                 if(x.y() < 0) return null;
+                                 if(x.y() >= this.height) return null;
+                                 return mineItems.get(x.x() + x.y() * width);
+                             });
     }
 }
+
+record Tuple(int x, int y){}

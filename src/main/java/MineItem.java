@@ -26,6 +26,10 @@ public class MineItem {
         return number;
     }
 
+    public void addNumber() {
+        number++;
+    }
+
     public void setNumber(int number) {
         this.number = number;
     }
