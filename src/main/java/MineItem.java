@@ -1,5 +1,3 @@
-import java.util.function.Function;
-
 public class MineItem {
     private int number;
     private boolean isBomb;
