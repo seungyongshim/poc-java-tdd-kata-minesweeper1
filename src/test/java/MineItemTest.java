@@ -38,7 +38,6 @@ class MineItemTest {
         var sut = new MineItem();
 
         // act
-        sut.setCover();
         var ret = sut.toString();
 
         // assert
