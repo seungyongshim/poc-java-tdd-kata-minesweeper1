@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
@@ -9,13 +10,14 @@ public class Minefield {
                           .limit(width * height)
                           .map(x -> new MineItem())
                           .toList();
-
-        
-
+        new Random().ints(0, width * height)
+                    .distinct()
+                    .limit(bombsCount)
+                    .forEach(i -> mineItems.get(i).setBomb());
     }
+
     public Minefield(int width, int height) {
         this(width, height, 0);
-        
     }
 
     List<MineItem> mineItems;
