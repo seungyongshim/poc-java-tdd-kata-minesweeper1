@@ -2,6 +2,7 @@ import java.util.function.Function;
 
 public class MineItem {
     private int number;
+    private boolean isBomb;
 
     public int getNumber() {
         return number;
@@ -13,10 +14,10 @@ public class MineItem {
 
     @Override
     public String toString() {
-        return Integer.toString(number);
+        return isBomb ? "*" : Integer.toString(number);
     }
 
     public void setBomb() {
-
+        isBomb = true;
     }
 }
