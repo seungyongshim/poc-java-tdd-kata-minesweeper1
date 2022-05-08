@@ -20,4 +20,7 @@ public class MineItem {
     public void setBomb() {
         isBomb = true;
     }
+
+	public void setCover() {
+	}
 }

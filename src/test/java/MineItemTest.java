@@ -30,4 +30,18 @@ class MineItemTest {
         // assert
         assertEquals("*", ret);
     }
+
+    @Test
+    void should_cover()
+    {
+        // arrange
+        var sut = new MineItem();
+
+        // act
+        sut.setCover();
+        var ret = sut.toString();
+
+        // assert
+        assertEquals(".", ret);
+    }
 }
