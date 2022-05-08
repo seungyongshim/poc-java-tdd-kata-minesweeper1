@@ -16,7 +16,7 @@ public class Minefield {
                           .limit(width * height)
                           .map(x -> new MineItem(x % width, x / width))
                           .toList();
-        
+
         new Random().ints(0, width * height)
                     .distinct()
                     .limit(bombs)
@@ -51,9 +51,9 @@ public class Minefield {
         builder.add(new Tuple(item.getX() - 1, item.getY() + 1));
         builder.add(new Tuple(item.getX() , item.getY() + 1));
         builder.add(new Tuple(item.getX() + 1, item.getY() + 1));
-        
+
         return builder.build()
-                      .map(i -> 
+                      .map(i ->
                       {
                           if(i.x() < 0) return null;
                           if(i.x() >= this.width) return null;
@@ -65,4 +65,3 @@ public class Minefield {
     }
 }
 
-record Tuple(int x, int y){}
