@@ -28,4 +28,16 @@ public class MinefieldTest {
                         .count(), 3);
     }
 
+    @Test
+    void should_calc_near_bombs()
+    {
+        var sut = new Minefield(3, 3);
+
+        sut.getMineItems().get(1).setBomb();
+        sut.getMineItems().get(3).setBomb();
+
+        sut.calcNearBombs();
+
+        assertEquals(2, sut.getMineItems().get(0).getNumber());
+    }
 }
