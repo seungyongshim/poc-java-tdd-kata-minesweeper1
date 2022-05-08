@@ -6,7 +6,7 @@ import java.util.stream.Stream;
 public class Minefield {
     public Minefield(int i, int j) {
         mineItems = Stream.iterate(0, n -> n + 1)
-                          .limit(i * 9)
+                          .limit(i * j)
                           .map(x -> new MineItem())
                           .toList();
     }
