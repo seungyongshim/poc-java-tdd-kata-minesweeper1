@@ -14,7 +14,7 @@ public class Minefield {
 
         mineItems = Stream.iterate(0, n -> n + 1)
                           .limit(width * height)
-                          .map(x -> new MineItem())
+                          .map(x -> new MineItem(x % width, x / width))
                           .toList();
         
         new Random().ints(0, width * height)
@@ -51,14 +51,15 @@ public class Minefield {
         builderPosNear.add(new Tuple(item.getX() + 1, item.getY() + 1));
         
         return builderPosNear.build()
-                             .map(x -> 
+                             .map(i -> 
                              {
-                                 if(x.x() < 0) return null;
-                                 if(x.x() >= this.width) return null;
-                                 if(x.y() < 0) return null;
-                                 if(x.y() >= this.height) return null;
-                                 return mineItems.get(x.x() + x.y() * width);
-                             });
+                                 if(i.x() < 0) return null;
+                                 if(i.x() >= this.width) return null;
+                                 if(i.y() < 0) return null;
+                                 if(i.y() >= this.height) return null;
+                                 return mineItems.get(i.x() + i.y() * width);
+                             })
+                             .filter(x -> x != null);
     }
 }
 
